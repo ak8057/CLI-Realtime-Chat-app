@@ -2,28 +2,26 @@ const express = require("express");
 const data = require("./data/data.js");
 const chats = require("./data/data.js");
 const dotenv = require("dotenv");
+const mongoose = require('mongoose');
+const connectDB = require("./config/db.js");
+const userRoutes = require("./routes/userRoutes.js");
+const { notFound, errorHandler } = require("./middleware/errorMiddleware.js");
 dotenv.config();
-
 
 const app = express();
 
+connectDB();
 
-app.get("/", (req, res) => {
-  res.send("Hello World");
-});
+app.use(express.json());  //!to  accept json data
 
-app.get("/api/chat", (req, res) => {
-  res.send(data);
-});
-
-app.get("/api/chat/:id", (req, res) => {
-  // console.log(req.params.id);
-  const singleChat = chats.find((c) => c._id === req.params.id);
-  res.send(singleChat);
-});
+app.get('/'  , (req,res)=>{
+  res.send("API is running");
+})
 
 
-
+app.use('/api/user' , userRoutes)
+app.use(notFound)
+app.use(errorHandler)
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
