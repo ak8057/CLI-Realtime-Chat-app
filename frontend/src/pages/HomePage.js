@@ -1,20 +1,27 @@
-import React from 'react'
-import { Container, TabList, Tab, TabPanels, TabPanel, Tabs, Text, Box } from '@chakra-ui/react'
-import Login from '../components/Authentication/Login';
-import Signup from '../components/Authentication/Signup';
-import { useHistory } from 'react-router-dom';
-import { useEffect } from 'react';
+import React from "react";
+import {
+  Container,
+  TabList,
+  Tab,
+  TabPanels,
+  TabPanel,
+  Tabs,
+  Text,
+  Box,
+} from "@chakra-ui/react";
+import Login from "../components/Authentication/Login";
+import Signup from "../components/Authentication/Signup";
+import { useHistory } from "react-router-dom";
+import { useEffect } from "react";
 
 const HomePage = () => {
- const history = useHistory();
+  const history = useHistory();
 
- useEffect(() => {
-   const user = JSON.parse(localStorage.getItem("userInfo"));
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("userInfo"));
 
-   if (user) history.push("/chats");
- }, [history]);
-
-
+    if (user) history.push("/chats");
+  }, [history]);
 
   return (
     <Container maxW="xl" centerContent>
@@ -28,7 +35,15 @@ const HomePage = () => {
         borderRadius="lg"
         borderWidth="1px"
       >
-        <Text fontSize="5xl" fontFamily="Work sans" color={'orange.500'} borderColor={'red'} border={'7px solid'} textAlign={"center"} fontWeight={'bold'} >
+        <Text
+          fontSize="5xl"
+          fontFamily="Work sans"
+          color={"orange.500"}
+          borderColor={"red"}
+          border={"7px solid"}
+          textAlign={"center"}
+          fontWeight={"bold"}
+        >
           Talk-A-Tive
         </Text>
       </Box>
@@ -50,6 +65,6 @@ const HomePage = () => {
       </Box>
     </Container>
   );
-}
+};
 
-export default HomePage
+export default HomePage;

@@ -37,7 +37,7 @@ const ProfileModal = ({ user, children }) => {
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody
-            d="flex"
+            display="flex"
             flexDir="column"
             alignItems="center"
             justifyContent="space-between"
@@ -47,6 +47,7 @@ const ProfileModal = ({ user, children }) => {
               boxSize="150px"
               src={user.pic}
               alt={user.name}
+              objectFit="cover"
             />
             <Text
               fontSize={{ base: "28px", md: "30px" }}
